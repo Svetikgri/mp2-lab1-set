@@ -1,0 +1,20 @@
+﻿Построение начато 28.09.2017 23:40:23.
+     1>Проект "E:\mp2-lab1-set\sln\vc10\bitfield\bitfield.vcxproj" в узле 2 (целевые объекты build).
+     1>InitializeBuildStatus:
+         Обращение к "Debug\bitfield.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I../../../include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\src\tbitfield.cpp
+         tbitfield.cpp
+     1>e:\mp2-lab1-set\src\tbitfield.cpp(55): warning C4554: <<: проверьте порядок применения операторов на наличие ошибки; для четкого задания порядка используйте скобки
+       Lib:
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"E:\mp2-lab1-set\sln\vc10\Debug\bitfield.lib" /NOLOGO Debug\tbitfield.obj
+         Debug\tset.obj
+         bitfield.vcxproj -> E:\mp2-lab1-set\sln\vc10\Debug\bitfield.lib
+       FinalizeBuildStatus:
+         Файл "Debug\bitfield.unsuccessfulbuild" удаляется.
+         Обращение к "Debug\bitfield.lastbuildstate".
+     1>Построение проекта "E:\mp2-lab1-set\sln\vc10\bitfield\bitfield.vcxproj" завершено (целевые объекты build).
+
+Построение успешно завершено.
+
+Затраченное время: 00:00:00.73
