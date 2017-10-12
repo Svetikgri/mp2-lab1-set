@@ -292,3 +292,86 @@ TEST(TBitField, bitfields_with_different_bits_are_not_equal)
 
   EXPECT_NE(bf1, bf2);
 }
+TEST(TBitField, check_size)
+{
+	const int size1 = 100, size2 = 70;
+	TBitField set1(size1), set2(size2);
+
+	set1.SetBit(1);
+	set1.SetBit(50);
+	set1.SetBit(90);
+
+	set2.SetBit(1);
+	set2.SetBit(50);
+	set2.SetBit(35);
+
+	TBitField res (100);
+	res.SetBit(1);
+	res.SetBit(35);
+	res.SetBit(50);
+	res.SetBit(90);
+
+	EXPECT_EQ(res, set1 | set2);
+}
+TEST(TBitField, check_size_other)
+{
+	const int size1 = 100, size2 = 70;
+	TBitField set1(size1), set2(size2);
+
+	set1.SetBit(1);
+	set1.SetBit(50);
+	set1.SetBit(90);
+
+	set2.SetBit(1);
+	set2.SetBit(50);
+	set2.SetBit(35);
+
+	TBitField res (100);
+	res.SetBit(1);
+	res.SetBit(35);
+	res.SetBit(50);
+	res.SetBit(90);
+
+	EXPECT_EQ(res, set2 | set1);
+}
+
+TEST(TBitField, check_size_mult)
+{
+	const int size1 = 100, size2 = 70;
+	TBitField set1(size1), set2(size2);
+
+	set1.SetBit(1);
+	set1.SetBit(50);
+	set1.SetBit(90);
+
+	set2.SetBit(1);
+	set2.SetBit(50);
+	set2.SetBit(35);
+
+	TBitField res (100);
+	res.SetBit(1);
+	res.SetBit(50);
+
+
+	EXPECT_EQ(res, set2 & set1);
+}
+TEST(TBitField, check_size_mult1)
+{
+	const int size1 = 100, size2 = 70;
+	TBitField set1(size1), set2(size2);
+
+	set1.SetBit(1);
+	set1.SetBit(50);
+	set1.SetBit(90);
+
+	set2.SetBit(1);
+	set2.SetBit(50);
+	set2.SetBit(35);
+
+	TBitField res (100);
+	res.SetBit(1);
+	res.SetBit(50);
+
+
+	EXPECT_EQ(res, set1 & set2);
+}
