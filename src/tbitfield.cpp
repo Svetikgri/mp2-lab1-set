@@ -156,12 +156,22 @@ TBitField TBitField::operator&(const TBitField &bf) // операция "и"
 	{ 
 		len = bf.BitLen; 
 	}	
-	TBitField temp(len);  
-	memcpy(temp.pMem, pMem, sizeof(temp.pMem) ); 
+	TBitField temp(len); 
+	//for (int i=0; i < MemLen; i++ )  
+	//	temp.pMem[i] = pMem[i];
+	//memcpy(temp.pMem, pMem, sizeof(temp.pMem) ); 
 		for (int i=0; i < temp.MemLen; i++ )  
-		temp.pMem[i] &= bf.pMem[i];
+		//temp.pMem[i] &= bf.pMem[i];
+		temp.pMem[i] = bf.pMem[i] &pMem[i];
 
 	return temp;
+	/*int len=0;
+	if (BitLen>bf.BitLen) len=bf.BitLen;
+		else len=BitLen;
+	TBitField res(len);
+	for(int i=0;i<res.MemLen;i++)
+		res.pMem[i]=pMem[i]&bf.pMem[i];
+	return res;*/
 }
 
 TBitField TBitField::operator~(void) // отрицание
