@@ -345,10 +345,14 @@ TEST(TBitField, check_size_mult)
 	set1.SetBit(90);
 
 	set2.SetBit(1);
-	set2.SetBit(50);
 	set2.SetBit(35);
+	set2.SetBit(50);
+	
+
 
 	TBitField res (70);
+	//TBitField res (100);
+
 	res.SetBit(1);
 	res.SetBit(50);
 
@@ -369,11 +373,15 @@ TEST(TBitField, check_size_mult1)
 	set2.SetBit(35);
 
 	TBitField res (70);
+
+	//TBitField res (100);
+
 	res.SetBit(1);
 	res.SetBit(50);
 
 
 	EXPECT_EQ(res, set1 & set2);
+
 }
 TEST(TBitField, check_invariant)
 {
@@ -398,3 +406,23 @@ TEST(TBitField, check_invariant)
 	
 	EXPECT_NE(res, set1 | set2);
 }
+
+/*	TSet set1(10), set2(6);
+//set1 = {0,1,2};
+set1.InsElem(0);
+set1.InsElem(1);
+set1.InsElem(2);
+//set2{3,4,5};
+set2.InsElem(3);
+set2.InsElem(4);
+set2.InsElem(5);
+TSet set3(6), expSet(6);
+set3=set1*(~set2);
+//expSet{0,1,2};
+expSet.InsElem(0);
+expSet.InsElem(1);
+expSet.InsElem(2);
+
+EXPECT_EQ(expSet, set3);*/
+
+

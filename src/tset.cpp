@@ -7,17 +7,20 @@
 
 #include "tset.h"
 
-TSet::TSet(int mp) : BitField(mp)
+TSet::TSet(int mp) :
+MaxPower(mp), BitField(mp)
 {
 }
 
 // конструктор копирования
-TSet::TSet(const TSet &s) : BitField(s.BitField)
+TSet::TSet(const TSet &s) :
+MaxPower(s.MaxPower), BitField(s.BitField)
 {
 }
 
 // конструктор преобразования типа
-TSet::TSet(const TBitField &bf) : BitField(bf)
+TSet::TSet(const TBitField &bf) :
+/*MaxPower(bf.GetLenght()),*/ BitField(bf)
 {
 }
 
@@ -34,18 +37,20 @@ int TSet::GetMaxPower(void) const // получить макс. к-во эл-т�
 
 int TSet::IsMember(const int Elem) const // элемент множества?
 {
-	return BitField.GetBit(Elem);
+
+return BitField.GetBit(Elem);
+
 }
 
 void TSet::InsElem(const int Elem) // включение элемента множества
 {
-	
+
 	BitField.SetBit(Elem);
 }
 
 void TSet::DelElem(const int Elem) // исключение элемента множества
 {
-	
+
 	BitField.ClrBit(Elem);
 }
 
@@ -60,26 +65,34 @@ TSet& TSet::operator=(const TSet &s) // присваивание
 
 int TSet::operator==(const TSet &s) const // сравнение
 {
+	if (MaxPower==s.GetMaxPower())
 	if(BitField==s.BitField)
     return 1;
+	//return BitField == s.BitField;
 }
 
 int TSet::operator!=(const TSet &s) const // сравнение
 {
+	
 	if(BitField!=s.BitField)
 	return 1;
+	//return BitField != s.BitField;
 }
 
 TSet TSet::operator+(const TSet &s) // объединение
 {
+
 	//if (MaxPower==s.GetMaxPower())
+
+	/*TSet res(BitField | s.BitField);
+	return res;*/
 	BitField=BitField | s.BitField; 
 	return *this;
 }
 
 TSet TSet::operator+(const int Elem) // объединение с элементом
 {
-	
+	//TSet res(BitField | s.BitField)
 	TSet res(*this);
 	res.InsElem(Elem);
 	return res;
@@ -95,13 +108,15 @@ TSet TSet::operator-(const int Elem) // разность с элементом
 
 TSet TSet::operator*(const TSet &s) // пересечение
 {
-	BitField=BitField & s.BitField; 
-	return *this;
+	/*BitField=BitField & s.BitField; 
+	return *this;*/
+	TSet temp(BitField & s.BitField);
+	return temp;
 }
 
 TSet TSet::operator~(void) // дополнение
 {
-	TSet res( (~BitField) ); 
+	TSet res(~BitField); 
 	return res;
 
 }
